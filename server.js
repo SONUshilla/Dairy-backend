@@ -57,7 +57,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://react-widk.onrender.com'
 }));
 app.use(helmet({
   contentSecurityPolicy: {
@@ -69,7 +69,7 @@ app.use(helmet({
   }
 }));
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'https://react-widk.onrender.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -651,7 +651,7 @@ Promise.all([
 });
   }
   else{
-    res.redirect("http://localhost:3000/login");
+    res.redirect("https://react-widk.onrender.com/login");
   }
 });
 
@@ -663,7 +663,7 @@ app.get('/auth/google', passport.authenticate('google', {
 
 app.get("/authTrue", (req, res) => {
   console.log("Authentication process complete");
-  res.redirect("http://localhost:3000");
+  res.redirect("https://react-widk.onrender.com");
 });
 app.get("/auth/google/home", passport.authenticate("google", {
   successRedirect: "/authTrue",
