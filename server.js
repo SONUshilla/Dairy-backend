@@ -56,9 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 // Enable CORS
-app.use(cors({
-  origin: 'https://react-widk.onrender.com'
-}));
+app.use(cors());
 app.use(helmet({
   contentSecurityPolicy: {
       directives: {
