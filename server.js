@@ -29,7 +29,9 @@ const db = new Client({
 db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database', err));
-
+const corsOptions={
+  origin:"https://react-widk.onrender.com/",
+  credentials:true,};
 // Configure Express app
 const app = express();
 app.use(bodyParser.json());
@@ -38,9 +40,12 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  //cookie: { secure: true } remove this line for HTTP connection
+  cookie: { secure: true,
+          httpOnly: true,
+          sameSite:'none',
+          }
 }));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(bodyParser.json({ limit: "10mb" })); // Adjust the limit as needed
 // Middleware to parse JSON bodies
