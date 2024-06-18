@@ -30,8 +30,8 @@ db.connect()
   .then(() => console.log('Connected to PostgreSQL database'))
   .catch(err => console.error('Error connecting to PostgreSQL database', err));
 const corsOptions={
-  origin:"https://react-widk.onrender.com/",
-  credentials:true,};
+  credentials:true,
+};
 // Configure Express app
 const app = express();
 app.use(bodyParser.json());
